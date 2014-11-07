@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="http://platform.linkedin.com/in.js">
+        api_key:75avazjd24f756
+        onLoad: onLinkedInLoad
+        </script>
+       
+            <script type="text/javascript" > 
+        var idvalue;
+         //document.getElementById("sa").textContent='asdasdasd'; 
+        function onLinkedInLoad() {
+           var profileDiv = document.getElementById("sample");
+
+               var url = "/companies?email-domain=<?php echo $linkedinSearchDomain ?>";
+
+                console.log(url);
+            
+                IN.API.Raw(url).result(function(response) {   
+
+                    console.log(response);
+                    //var id = response.id;
+                   // alert(id);
+                    console.log(response._total);
+                    var arrayValues=response.values;
+                    console.log(arrayValues);
+
+                    var value=arrayValues[0];
+                    console.log(value);
+                    console.log(value.id);
+                    console.log(value.name);
+                    idvalue=value.id;
+//                    if(idvalue)
+//                        {
+//                    //$('#dataId').val(idvalue);
+//                    //var inHTML = '<script type="IN/CompanyProfile" data-id="'+idvalue+'" data-format="inline"></'+'script>';
+//                   var inHTML='loadlinkedin.php?data_id='+idvalue;
+//                    var inHTML2='linkedprofiles.php?data_id='+idvalue;
+//                    $('#lframe').attr('src',inHTML);
+//                    $('#lframe1').attr('src',inHTML2);
+//                    }
+//                    else
+//                        {
+//                             $('#lframe').hide();
+//                             $('#lframe1').hide();
+//                             $('#loader').hide();
+//                        }
+                        
+                    //  profileDiv.innerHtml=inHTML;
+                    //document.getElementById('sa').innerHTML='<script type="IN/CompanyProfile" data-id="'+idvalue+'" data-format="inline"></'+'script>';
+                }).error( function(error){
+                    
+                   $('#lframe').hide();
+                   $('#lframe1').hide();
+                   $('#loader').hide(); });
+          }
+
+
+        </script>
+        </script>
+    </head>
+    <body>
+        <div>Hello World</div>
+    </body>
+</html>
